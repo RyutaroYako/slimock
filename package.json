@@ -1,0 +1,45 @@
+{
+  "name": "slimock",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "slimock": "./dist/cli.js"
+  },
+  "scripts": {
+    "purge": "tsx src/cli.ts",
+    "build": "tsup",
+    "prepublishOnly": "npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "@vitest/coverage-v8": "4.0.8",
+    "tsup": "^8.5.1",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "vitest": "^4.0.8"
+  },
+  "dependencies": {
+    "linkedom": "0.18.12",
+    "pino": "10.1.0",
+    "pino-pretty": "13.1.2",
+    "prettier": "3.6.2",
+    "purgecss": "7.0.2",
+    "tailwind-api-utils": "1.0.3",
+    "tailwindcss": "4.1.17"
+  }
+}
