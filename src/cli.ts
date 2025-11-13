@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import { purgeHTML } from './pipeline';
 import { getLogger } from './logger';
 

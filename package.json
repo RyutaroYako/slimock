@@ -1,7 +1,18 @@
 {
   "name": "slimock",
-  "version": "1.0.0",
+  "version": "0.0.2",
+  "description": "A CLI utility that optimizes HTML snapshots by removing unused styles and preparing them for LLM context",
+  "keywords": ["html", "css", "purge", "tailwind", "mock", "optimization", "llm"],
+  "author": "RyutaroYako",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RyutaroYako/slimock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RyutaroYako/slimock/issues"
+  },
+  "homepage": "https://github.com/RyutaroYako/slimock#readme",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
