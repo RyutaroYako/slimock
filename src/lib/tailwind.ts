@@ -1,6 +1,8 @@
 import { TailwindUtils } from 'tailwind-api-utils';
 import { parseHTML } from 'linkedom';
 import { getLogger } from '../logger';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
 
 let tailwindUtils: TailwindUtils | null = null;
 let isInitialized = false;
@@ -13,7 +15,11 @@ export async function initializeTailwindUtils(): Promise<void> {
   }
 
   try {
-    tailwindUtils = new TailwindUtils();
+    // Get the directory of this module to help resolve tailwindcss
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
+
+    tailwindUtils = new TailwindUtils({ paths: [__dirname, process.cwd()] });
 
     logger.info({ version: tailwindUtils.isV4 ? '4' : '3' }, 'Initializing TailwindUtils');
 
@@ -24,11 +30,10 @@ export async function initializeTailwindUtils(): Promise<void> {
         plugins: [],
       };
 
-      await (tailwindUtils as any).loadConfig(defaultConfig);
+      await (tailwindUtils as any).loadConfig(defaultConfig, { pwd: __dirname });
       logger.info('TailwindUtils initialized (Tailwind v4, default config)');
     } else {
-      const projectRoot = process.cwd();
-      tailwindUtils.loadConfigV3(projectRoot);
+      tailwindUtils.loadConfigV3(process.cwd(), { pwd: __dirname });
       logger.info('TailwindUtils initialized (Tailwind v3)');
     }
 
