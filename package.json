@@ -1,6 +1,6 @@
 {
   "name": "slimock",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A CLI utility that optimizes HTML snapshots by removing unused styles and preparing them for LLM context",
   "keywords": [
     "html",
